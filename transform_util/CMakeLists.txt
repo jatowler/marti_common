@@ -77,3 +77,13 @@ install(TARGETS ${PROJECT_NAME} lat_lon_tf_echo
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 )
 
+install(FILES transformer_plugins.xml
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
+
+install(DIRECTORY launch/
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch
+)
+
+catkin_install_python(PROGRAMS scripts/initialize_origin
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})

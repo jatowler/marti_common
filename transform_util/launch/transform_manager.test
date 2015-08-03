@@ -1,6 +1,6 @@
 <launch>
 
-  <node pkg="transform_util" type="initialize_origin.py" name="initialize_origin">
+  <node pkg="transform_util" type="initialize_origin" name="initialize_origin">
     <param name="local_xy_frame" value="/far_field"/>
     <param name="local_xy_origin" value="swri"/>
     <rosparam param="local_xy_origins">
