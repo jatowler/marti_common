@@ -15,6 +15,6 @@
   
   <depend>roscpp</depend>
   
-  <test_depend>rostst</test_depend>
+  <test_depend>rostest</test_depend>
 
 </package>
