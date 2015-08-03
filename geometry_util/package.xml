@@ -15,4 +15,6 @@
   
   <depend>roscpp</depend>
   <depend>cmake_modules</depend>
+  <depend>geos</depend>
+  <depend>opencv2</depend>
 </package>
