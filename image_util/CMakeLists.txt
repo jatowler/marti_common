@@ -53,6 +53,9 @@ catkin_package(
     math_util
     opencv_util
     image_transport
+  DEPENDS
+    opencv2
+    libqt4-dev
 )
 
 include_directories(include ${catkin_INCLUDE_DIRS} ${QT_INCLUDE_DIR} ${OpenCV_INCLUDE_DIRS} ${EIGEN_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})

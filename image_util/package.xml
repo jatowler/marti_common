@@ -24,6 +24,8 @@
   <depend>geometry_msgs</depend>
   <depend>image_geometry</depend>
   <depend>nav_msgs</depend>
+  <depend>opencv2</depend>
+  <depend>libqt4-dev</depend>
   <depend>camera_calibration_parsers</depend>
   <depend>math_util</depend>
   <depend>opencv_util</depend>
