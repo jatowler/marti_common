@@ -11,7 +11,8 @@ catkin_package(
 include_directories(include ${catkin_INCLUDE_DIRS})
   
 add_library(${PROJECT_NAME} 
-    src/serial_port.cpp)
+    src/serial_port.cpp
+    src/serial_console.cpp)
 target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
 
 install(DIRECTORY include/${PROJECT_NAME}/
