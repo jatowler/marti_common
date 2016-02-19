@@ -1,4 +1,5 @@
 import rospy
+from rospy.impl.tcpros_base import DEFAULT_BUFF_SIZE
 from Queue import Queue, Empty as EmptyQueueException
 from threading import Condition
 
@@ -62,3 +63,32 @@ def service_wrapper(func):
             rospy.logerr(traceback.format_exc())
             return None
     return wrapper
+
+
+def subscribe_single_threaded(name, data_class, callback=None,
+                              callback_args=None, queue_size=None,
+                              buff_size=DEFAULT_BUFF_SIZE, tcp_nodelay=False):
+    '''Create a Subscriber with single-threaded callback.
+
+    All parameter definitions are the same as for rospy.Subscriber. Callback
+    will be wrapped with single_threaded decorator above.
+
+    Returns a rospy.Subscriber defined exactly as if it had been called
+    directly, but with a single-threaded callback.
+    '''
+
+    # rospy.SubscriberImpl._invoke_callback calls the callback with different
+    # arities depending on callback_args, so we have to supply a function with
+    # the expected signature
+    if callback_args is None:
+        @single_threaded
+        def single_threaded_callback(msg):
+            callback(msg)
+    else:
+        @single_threaded
+        def single_threaded_callback(msg, args):
+            callback(msg, args)
+
+    # All arguments except the callback are passed straight through
+    return rospy.Subscriber(name, data_class, single_threaded_callback,
+                            callback_args, queue_size, buff_size, tcp_nodelay)
