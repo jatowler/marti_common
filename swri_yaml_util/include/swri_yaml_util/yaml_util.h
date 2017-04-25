@@ -44,6 +44,7 @@ namespace YAML
   void operator >> (const YAML::Node& node, double& value);
   void operator >> (const YAML::Node& node, bool& value);
   void operator >> (const YAML::Node& node, int16_t& value);
+  void operator >> (const YAML::Node& node, uint16_t& value);
   void operator >> (const YAML::Node& node, int32_t& value);
   void operator >> (const YAML::Node& node, uint32_t& value);
   void operator >> (const YAML::Node& node, int64_t& value);
@@ -55,6 +56,8 @@ namespace YAML
 namespace swri_yaml_util
 {
   bool LoadFile(const std::string& path, YAML::Node& yaml);
+  bool LoadString(const std::string& input, YAML::Node& yaml);
+  bool LoadMap(const std::map<std::string, std::string>& dict, YAML::Node& yaml);
   bool FindValue(const YAML::Node& node, const std::string& name);
   
   std::auto_ptr<YAML::Node> Clone(const YAML::Node& node);
